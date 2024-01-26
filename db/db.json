@@ -1,0 +1,25 @@
+{
+  "student": [
+    {
+      "id": "74cd",
+      "name": "Rana Chowdhury",
+      "email": "kunalaneja@databonker.com",
+      "roll": "0038",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCZPWjCbYxbPzblGR8vOiL6bk3kmSVaoAzoQ&usqp=CAU"
+    },
+    {
+      "id": "61aa",
+      "name": "Yeasin Arafath",
+      "email": "easinarafath12435@gmail.com",
+      "roll": "144101",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_KXEB-S2jZ4g9Ae7U-8CRWzzIFTXGuiiPUg&usqp=CAU"
+    },
+    {
+      "id": "5037",
+      "name": "Md Ariful Islam",
+      "email": "arifafsar55@gmail.com",
+      "roll": "667766",
+      "photo": "https://scontent.fdac22-1.fna.fbcdn.net/v/t1.6435-9/95373477_344020443225054_641569862350536704_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=be3454&_nc_eui2=AeGbXyI2cFA90GyvJxdka1OMtjHcKtoWAkS2Mdwq2hYCRBXWp40MuBjjCEpLb2Dn13KsHvWa-ADTTcYT8pSsqbfT&_nc_ohc=ClBOK59IQK4AX--FGb_&_nc_ht=scontent.fdac22-1.fna&oh=00_AfCV7teiIW5DNSmKyapXtbCmSp1j9qL9AbDLTLHOUZHBFA&oe=65DB54D0"
+    }
+  ]
+}
