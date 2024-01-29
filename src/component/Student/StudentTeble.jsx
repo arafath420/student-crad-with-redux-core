@@ -11,6 +11,7 @@ import {
 } from "../../redux/student/action";
 import { Button, Modal } from "react-bootstrap";
 import ViewModal from "./ViewModal";
+import Swal from "sweetalert2";
 
 const StudentTeble = () => {
   const { student, loader } = useSelector((state) => state.student);
@@ -23,8 +24,43 @@ const StudentTeble = () => {
   const handleShow = () => setShow(true);
 
   //Handle Student Delete
-  const handleStudentDelete = (id) => {
-    dispatch(deleteStudent(id));
+  const handleStudentDelete = (item) => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
+    });
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        text: `Hello ${item.name} Can you delete it?`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          dispatch(deleteStudent(item.id));
+          swalWithBootstrapButtons.fire({
+            title: "Deleted!",
+            text: `Hello ${item.name} Your file has been deleted.`,
+            icon: "success",
+          });
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire({
+            title: "Cancelled",
+            text: `Hello ${item.name} Your File Is Not Deleted`,
+            icon: "error",
+          });
+        }
+      });
   };
 
   //Handle Student Edit
@@ -113,10 +149,11 @@ const StudentTeble = () => {
                           >
                             <FaEdit />
                           </button>
-                          <button className="btn btn-sm btn-danger">
-                            <FaRegTrashCan
-                              onClick={() => handleStudentDelete(item.id)}
-                            />
+                          <button
+                            className="btn btn-sm btn-danger"
+                            onClick={() => handleStudentDelete(item)}
+                          >
+                            <FaRegTrashCan />
                           </button>
                         </td>
                       </tr>

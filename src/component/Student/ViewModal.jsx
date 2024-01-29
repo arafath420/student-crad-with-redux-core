@@ -25,7 +25,7 @@ const ViewModal = ({ show, handleClose, handleShow, singleStude }) => {
               <b>Email:</b> {singleStude.email}
             </span>
             <span>
-              <b>Roll:</b> {singleStude.Roll}
+              <b>Roll:</b> {singleStude.roll}
             </span>
           </div>
           <hr />

@@ -7,6 +7,7 @@ import {
   editStudent,
   editStudentData,
 } from "../../redux/student/action";
+import Swal from "sweetalert2";
 
 const Home = () => {
   const { editStu } = useSelector((state) => state.student);
@@ -29,13 +30,34 @@ const Home = () => {
   const handleInputSubmit = (e) => {
     e.preventDefault();
     if (editStu.editMood) {
-      dispatch(editStudentData(input));
-      dispatch(editStudent(false, ""));
+      Swal.fire({
+        title: `Hello ${input.name} Do you want to save the changes?`,
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Save",
+        denyButtonText: `Don't save`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          dispatch(editStudentData(input));
+          Swal.fire("Saved!", "", "success");
+          dispatch(editStudent(false, ""));
+          setInput({ name: "", email: "", roll: "", photo: "" });
+        } else if (result.isDenied) {
+          Swal.fire(`Hello ${input.name} Changes are not saved`, "", "info");
+        }
+      });
     } else {
       dispatch(createStudent(input));
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: `Hello ${input.name} Welocome`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      setInput({ name: "", email: "", roll: "", photo: "" });
     }
-
-    setInput({ name: "", email: "", roll: "", photo: "" });
   };
 
   const handleInputReset = () => {
