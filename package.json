@@ -8,11 +8,13 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "serve": "json-server --watch ./db/db.json --port 2000"
+    "serve": "json-server --watch ./db/db.json --port 2000",
+    "start": "concurrently \"npm run serve\" \"npm run dev\""
   },
   "dependencies": {
     "axios": "^1.6.5",
     "bootstrap": "^5.3.2",
+    "concurrently": "^8.2.2",
     "json-server": "^1.0.0-alpha.21",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.0",
